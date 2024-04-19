@@ -1,11 +1,4 @@
 @font-face {
-  font-family: 'Abril Fatface';
-  src: url('fonts/AbrilFatface-Regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
   font-family: 'Lato';
   src: url('fonts/Lato-Regular.ttf') format('truetype');
   font-weight: normal;
@@ -27,7 +20,7 @@ h1 {
   text-align: center;
   margin-top: 2rem;
   margin-bottom: 1rem;
-  font-family: 'Abril Fatface', Helvetica, sans-serif;
+  font-family: 'Lato', Helvetica, sans-serif;
   font-size: 3rem;
   letter-spacing: 0.2rem;
   text-transform: uppercase;
