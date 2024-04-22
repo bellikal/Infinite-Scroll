@@ -12,10 +12,33 @@ class UnsplashLoader {
         this.count = 5; //Number of images that are loaded the first time
         this.apiUrl = `https://api.unsplash.com/photos/random/?client_id=${this.apiKey}&count=${this.count}`; // URL of the API
 
-        // Event Listener for the Scroll-Event
-        window.addEventListener('scroll', this.checkScroll.bind(this));
+        // Throttle Method for the Scroll-Event
+        window.addEventListener('scroll', this.throttle(this.checkScroll, 500).bind(this));
+
         // Initial Calling to load Photos
         this.getPhotos();
+    }
+
+    // Throttle Function
+    throttle(func, limit) {
+        let lastFunc;
+        let lastRan;
+        return function() {
+            const context = this;
+            const args = arguments;
+            if (!lastRan) {
+                func.apply(context, args);
+                lastRan = Date.now();
+            } else {
+                clearTimeout(lastFunc);
+                lastFunc = setTimeout(function() {
+                    if ((Date.now() - lastRan) >= limit) {
+                        func.apply(context, args);
+                        lastRan = Date.now();
+                    }
+                }, limit - (Date.now() - lastRan));
+            }
+        }
     }
 
     // Get photos from Unsplash API
