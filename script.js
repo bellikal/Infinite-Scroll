@@ -43,7 +43,7 @@ class UnsplashLoader {
 
     // Get photos from Unsplash API
     async getPhotos() {
-        if (!this.ready) {
+        if (this.imagesLoaded === 0) {
             this.loader.hidden = false; // SHow Loader while Images are loading
         }
         try {
